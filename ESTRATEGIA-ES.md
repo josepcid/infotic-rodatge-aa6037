@@ -232,7 +232,7 @@ Los 3 reels que deben estar fijados en el perfil de @infotic.studio. Todos verti
 | 18–35 s | "**Semana 2 — Plan.** Te damos una lista priorizada. No 80 cosas. Cinco o seis, en orden, con tiempo y coste. Las que realmente importan." | Plano de una pizarra/cuaderno con 5 puntos numerados. Texto: **"2 · Plan priorizado"** |
 | 35–55 s | "**Semanas 3 a 5 — Implementación.** Lo hacemos nosotros. No te enviamos deberes." | Planos equipo trabajando. Texto: **"3 · Implementación hecha por nosotros"** |
 | 55–75 s | "**Semana 6 — Evidencia.** Te entregamos una carpeta con todo lo que se ha hecho, firmado. Esta carpeta es lo que enseñas a una inspección, a un cliente grande o a tu consejo." | Plano detallado de la carpeta física con logo. Texto: **"4 · Carpeta de Evidencias"** |
-| 75–85 s | "Seis semanas. Un método. Una carpeta. Si quieres saber cómo sería en tu caso, baja al perfil y pide la auditoría gratuita." | Logo + CTA: **"Auditoría gratuita en la bio"** |
+| 75–85 s | "Seis semanas. Un método. Una carpeta. Si quieres saber cómo sería en tu caso, en la bio tienes el enlace de la auditoría gratuita." | Logo + CTA: **"Auditoría gratuita en la bio"** |
 
 ---
 
@@ -350,7 +350,7 @@ Un solo cliente, 60 s, en formato "antes / trabajo / después". Lo grabamos con 
 
 **[3:30–3:50] — CTA y cierre**
 
-> "Apúntate en el formulario aquí abajo. Esta semana tenemos **4 huecos abiertos**. Si cuando lo leas ya están llenos, te confirmamos la semana siguiente.
+> "Apúntate en el formulario aquí abajo.
 >
 > Nos vemos en la llamada."
 

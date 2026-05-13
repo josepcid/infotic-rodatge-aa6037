@@ -26,7 +26,7 @@ Cada guión lleva dos columnas: lo que se **dice** (voz del fundador) y lo que s
 - **Se ve:** B-roll de una pantalla con un informe de auditoría (puede ser una captura mock o un PDF real difuminado). Texto en pantalla: **"3 auditorías esta semana · 3 agujeros graves"**.
 
 **CTA (28–35 s):**
-- **Dice:** "En Infotic te hacemos una auditoría gratuita de 30 minutos y te decimos exactamente qué tienes y qué te falta. Pídela antes de que te la pida Hacienda."
+- **Dice:** "En Infotic te hacemos una auditoría gratuita de 30 minutos y te decimos exactamente qué tienes y qué te falta. Pídela antes de que te la pida la inspección."
 - **Se ve:** logo Infotic + texto en pantalla: **"Auditoría gratuita · 30 min"** + flecha hacia el CTA del lead form.
 
 ---
@@ -105,7 +105,7 @@ Para acompañar los vídeos en feed. Se pueden combinar con cualquiera de los 4 
 >
 > En Infotic te hacemos una auditoría gratuita de 30 minutos. Te decimos qué tienes, qué te falta y qué cuesta ponerlo al día.
 >
-> 👉 Apúntate abajo. Esta semana tenemos 4 huecos.
+> 👉 Apúntate abajo.
 
 ### Cuerpo B — Historia / parada total
 

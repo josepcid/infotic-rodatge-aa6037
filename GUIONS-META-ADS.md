@@ -26,7 +26,7 @@ Cada guió té dues columnes: el que es **diu** (veu del fundador) i el que **es
 - **Es veu:** B-roll d'una pantalla amb un report d'auditoria (pot ser una captura mock o un PDF real difuminat). Text overlay: **"3 auditories aquesta setmana · 3 forats greus"**.
 
 **CTA (28–35 s):**
-- **Diu:** "A Infotic et fem una auditoria gratuïta de 30 minuts i et diem exactament què tens i què et falta. Demana-la abans que te la demani Hisenda."
+- **Diu:** "A Infotic et fem una auditoria gratuïta de 30 minuts i et diem exactament què tens i què et falta. Demana-la abans que te la demani la inspecció."
 - **Es veu:** logo Infotic + text overlay: **"Auditoria gratuïta · 30 min"** + fletxa cap al CTA del lead form.
 
 ---
@@ -105,7 +105,7 @@ Per acompanyar els vídeos al feed. Es poden combinar amb qualsevol dels 4 hooks
 >
 > A Infotic et fem una auditoria gratuïta de 30 minuts. Et diem què tens, què et falta i què costa posar-ho al dia.
 >
-> 👉 Apunta't a sota. Aquesta setmana tenim 4 espais.
+> 👉 Apunta't a sota.
 
 ### Cos B — Història / parada total
 
