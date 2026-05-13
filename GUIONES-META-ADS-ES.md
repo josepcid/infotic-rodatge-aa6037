@@ -14,7 +14,7 @@ Cada guión lleva dos columnas: lo que se **dice** (voz del fundador) y lo que s
 ## 1 · Ángulo REGULATORIO — "Quién es el responsable, de verdad"
 
 **Hook (0–3 s):**
-- **Dice:** "Si mañana entran a los datos de tus clientes, ¿quién paga? Spoiler: tú."
+- **Dice:** "Si mañana roban los datos de tus clientes, ¿quién paga? Spoiler: tú."
 - **Se ve:** primer plano del fundador, mirada directa a cámara, oficina de Infotic borrosa al fondo. Texto en pantalla en amarillo: **"NIS2 · Octubre 2025"**.
 
 **Contexto (3–15 s):**

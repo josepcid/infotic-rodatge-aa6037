@@ -210,7 +210,7 @@ Los 3 reels que deben estar fijados en el perfil de @infotic.studio. Todos verti
 
 | Tiempo | Dice | Se ve |
 |---|---|---|
-| 0–5 s | "Te voy a contar por qué montamos Infotic, porque no fue por casualidad." | Primer plano fundador, oficina al fondo. Texto overlay: **"Por qué Infotic"** |
+| 0–5 s | "Hola, soy Ramón. Te voy a contar por qué montamos Infotic, porque no fue por casualidad." | Primer plano fundador, oficina al fondo. Texto overlay: **"Por qué Infotic"** |
 | 5–25 s | "Yo venía de [X años] en el sector. Y me di cuenta de que las pymes catalanas estaban esperando a ser hackeadas. No porque fueran descuidadas — porque nadie se lo explicaba en cristiano." | Planos de B-roll: pantalla de ordenador, equipo trabajando, manos escribiendo. |
 | 25–50 s | "El primer cliente fue [tipo de empresa]. Tenían [problema concreto]. Lo cerramos en [X tiempo]. Y cuando vi la cara de tranquilidad del director, supe que esto era lo que quería hacer." | Planos del despacho de Infotic, posiblemente una foto antigua del primer día. |
 | 50–70 s | "Hoy somos [X personas / X clientes] y seguimos con la misma idea: traducir el mal rollo de la ciberseguridad al lenguaje del director. Si esto te suena, síguenos." | Plano equipo + logo + texto overlay: **"Síguenos para traducciones en cristiano"** |
@@ -288,7 +288,7 @@ Un solo cliente, 60 s, en formato "antes / trabajo / después". Lo grabamos con 
 
 > "Desde octubre de 2025, la directiva NIS2 ya es obligatoria en España. Y lo que poca gente te cuenta es que la responsabilidad **no es de tu informático, no es de tu proveedor, no es de tu cuñado**. Es **tuya**, como administrador. Negro sobre blanco, en la ley.
 >
-> Esto significa que si mañana entran a los datos de tus clientes — y te puedo decir por experiencia que cada semana le pasa a pymes como la tuya — tú respondes con tu cargo, y tu empresa responde con una multa de hasta 10 millones de euros o el 2% de la facturación."
+> Esto significa que si mañana roban los datos de tus clientes — y te puedo decir por experiencia que cada semana le pasa a pymes como la tuya — tú respondes con tu cargo, y tu empresa responde con una multa de hasta 10 millones de euros o el 2% de la facturación."
 
 *B-roll:* planos de despachos, manos escribiendo, captura del BOE, datos de 2024 sobre incidentes en Cataluña (si tienes fuente fiable).
 

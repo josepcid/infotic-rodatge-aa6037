@@ -210,7 +210,7 @@ Els 3 reels que han d'estar fixats al perfil d'@infotic.studio. Tots verticals, 
 
 | Temps | Diu | Es veu |
 |---|---|---|
-| 0–5 s | "Et vull explicar per què vam muntar Infotic, perquè no va ser per casualitat." | Primer pla fundador, oficina al fons. Text overlay: **"Per què Infotic"** |
+| 0–5 s | "Hola, soc en Ramón. Et vull explicar per què vam muntar Infotic, perquè no va ser per casualitat." | Primer pla fundador, oficina al fons. Text overlay: **"Per què Infotic"** |
 | 5–25 s | "Jo venia de [X anys] al sector. I em vaig adonar que les PIMEs catalanes estaven esperant a ser hackejades. No perquè fossin descuidades — perquè ningú els ho explicava en cristià." | Plans de B-roll: pantalla d'ordinador, equip treballant, mans escrivint. |
 | 25–50 s | "El primer client va ser [tipus d'empresa]. Tenien [problema concret]. Ho vam tancar en [X temps]. I quan vaig veure la cara de tranquil·litat del director, vaig saber que això era el que volia fer." | Plans del despatx d'Infotic, possiblement una foto antiga del primer dia. |
 | 50–70 s | "Avui som [X persones / X clients] i seguim amb la mateixa idea: traduir el mal rotllo de la ciberseguretat al llenguatge del director. Si això et sona, segueix-nos." | Pla equip + logo + text overlay: **"Segueix-nos per traduccions en cristià"** |
@@ -288,7 +288,7 @@ Un sol client, 60 s, en format "abans / treball / després". Ho gravem amb un so
 
 > "Des d'octubre de 2025, la directiva NIS2 ja és obligatòria a Espanya. I el que poca gent t'explica és que la responsabilitat **no és del teu informàtic, no és del teu proveïdor, no és del teu cunyat**. És **teva**, com a administrador. Negre sobre blanc, a la llei.
 >
-> Això vol dir que si demà entren a les dades dels teus clients — i et puc dir per experiència que cada setmana passa a PIMEs com la teva — tu respons amb el teu càrrec, i la teva empresa respon amb una multa de fins a 10 milions d'euros o el 2% de la facturació."
+> Això vol dir que si demà roben les dades dels teus clients — i et puc dir per experiència que cada setmana passa a PIMEs com la teva — tu respons amb el teu càrrec, i la teva empresa respon amb una multa de fins a 10 milions d'euros o el 2% de la facturació."
 
 *B-roll:* plans de despatxos, mans escrivint, captura del BOE, dades del 2024 sobre incidents a Catalunya (si tens font fiable).
 

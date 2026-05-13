@@ -14,7 +14,7 @@ Cada guió té dues columnes: el que es **diu** (veu del fundador) i el que **es
 ## 1 · Angle REGULATORI — "Qui és el responsable, de veritat"
 
 **Hook (0–3 s):**
-- **Diu:** "Si demà entren a les dades dels teus clients, qui paga? Spoiler: tu."
+- **Diu:** "Si demà roben les dades dels teus clients, qui paga? Spoiler: tu."
 - **Es veu:** primer pla del fundador, mirada directa a càmera, oficina d'Infotic borrosa al fons. Text overlay en groc: **"NIS2 · Octubre 2025"**.
 
 **Context (3–15 s):**
