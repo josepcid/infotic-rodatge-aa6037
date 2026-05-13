@@ -22,7 +22,7 @@ Cada guión lleva dos columnas: lo que se **dice** (voz del fundador) y lo que s
 - **Se ve:** planos cortos de oficina típica de pyme (impresora, mesas, despacho del jefe). En el momento de "tuya" volvemos al primer plano del fundador.
 
 **Prueba (15–28 s):**
-- **Dice:** "Multas de hasta 10 millones de euros o el 2% de la facturación. Y no te lo digo para asustar — te lo digo porque esta semana hemos auditado tres gestorías y las tres tenían agujeros que se resuelven en una tarde."
+- **Dice:** "Multas de hasta 10 millones de euros o el 2% de la facturación. Y no te lo digo para asustar — te lo digo porque esta semana hemos auditado tres gestorías y las tres tenían agujeros graves que nadie les había detectado."
 - **Se ve:** B-roll de una pantalla con un informe de auditoría (puede ser una captura mock o un PDF real difuminado). Texto en pantalla: **"3 auditorías esta semana · 3 agujeros graves"**.
 
 **CTA (28–35 s):**

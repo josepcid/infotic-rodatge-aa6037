@@ -22,7 +22,7 @@ Cada guió té dues columnes: el que es **diu** (veu del fundador) i el que **es
 - **Es veu:** plans curts d'oficina típica de PIME (impressora, taules, despatx del cap). En el moment de "teva" tornem al primer pla del fundador.
 
 **Prova (15–28 s):**
-- **Diu:** "Multes de fins a 10 milions d'euros o el 2% de la facturació. I no t'ho dic per espantar — t'ho dic perquè aquesta setmana hem auditat tres gestories i les tres tenien forats que es resolen en una tarda."
+- **Diu:** "Multes de fins a 10 milions d'euros o el 2% de la facturació. I no t'ho dic per espantar — t'ho dic perquè aquesta setmana hem auditat tres gestories i les tres tenien forats greus que ningú els havia detectat."
 - **Es veu:** B-roll d'una pantalla amb un report d'auditoria (pot ser una captura mock o un PDF real difuminat). Text overlay: **"3 auditories aquesta setmana · 3 forats greus"**.
 
 **CTA (28–35 s):**

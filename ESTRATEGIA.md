@@ -229,7 +229,7 @@ Els 3 reels que han d'estar fixats al perfil d'@infotic.studio. Tots verticals, 
 |---|---|---|
 | 0–4 s | "Una empresa em truca espantada. Què passa en les pròximes 6 setmanes?" | Primer pla fundador. Text overlay: **"El mètode Infotic"** |
 | 4–18 s | "**Setmana 1 — Auditoria.** Mirem què tens, què està protegit i què està obert. Sense judicis. Acabes amb un informe clar." | Pla mans amb tablet o portàtil revisant un panell. Text gran: **"1 · Auditoria"** |
-| 18–35 s | "**Setmana 2 — Pla.** Et donem una llista prioritzada. No 80 coses. Cinc o sis, en ordre, amb temps i cost. La majoria es resolen en una tarda." | Pla d'una pissarra/notebook amb 5 punts numerats. Text: **"2 · Pla prioritzat"** |
+| 18–35 s | "**Setmana 2 — Pla.** Et donem una llista prioritzada. No 80 coses. Cinc o sis, en ordre, amb temps i cost. Les que realment importen." | Pla d'una pissarra/notebook amb 5 punts numerats. Text: **"2 · Pla prioritzat"** |
 | 35–55 s | "**Setmanes 3 a 5 — Implementació.** Ho fem nosaltres. No t'enviem deures." | Plans equip treballant. Text: **"3 · Implementació feta per nosaltres"** |
 | 55–75 s | "**Setmana 6 — Evidència.** T'entreguem una carpeta amb tot el que s'ha fet, signat. Aquesta carpeta és el que ensenyes a una inspecció, a un client gran o al teu consell." | Pla detallat de la carpeta física amb logo. Text: **"4 · Carpeta d'Evidències"** |
 | 75–85 s | "Sis setmanes. Un mètode. Una carpeta. Si vols saber com seria al teu cas, baixa al perfil i demana l'auditoria gratuïta." | Logo + CTA: **"Auditoria gratuïta a la bio"** |
