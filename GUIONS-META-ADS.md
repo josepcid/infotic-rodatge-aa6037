@@ -58,7 +58,7 @@ Cada guió té dues columnes: el que es **diu** (veu del fundador) i el que **es
 - **Es veu:** primer pla del fundador. Text overlay: **"Hackegen la gestoria…"** que canvia a **"…cauen 200 empreses"**.
 
 **Context (3–15 s):**
-- **Diu:** "Una gestoria mitjana té dades fiscals i nòmines de 200 empreses. Una clínica té historials mèdics. Una assessoria té contractes i comptes bancaris. No et hackegen a tu perquè sí — et hackegen perquè ets la porta d'entrada a tots els que estan darrere."
+- **Diu:** "Una gestoria mitjana té dades fiscals i nòmines de 200 empreses. Una clínica té historials mèdics. Una assessoria té contractes i comptes bancaris. No t'hackegen a tu perquè sí — t'hackegen perquè ets la porta d'entrada a tots els que estan darrere."
 - **Es veu:** gràfic senzill animat: una caixa "Tu" connectada amb fletxes a 20 caixes "Clients". Quan diu "porta d'entrada", la caixa "Tu" es marca en vermell i les fletxes es pinten.
 
 **Prova (15–28 s):**

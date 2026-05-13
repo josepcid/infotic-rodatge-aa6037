@@ -211,7 +211,7 @@ Els 3 reels que han d'estar fixats al perfil d'@infotic.studio. Tots verticals, 
 | Temps | Diu | Es veu |
 |---|---|---|
 | 0–5 s | "Hola, soc en Ramón. Et vull explicar per què vam muntar Infotic, perquè no va ser per casualitat." | Primer pla fundador, oficina al fons. Text overlay: **"Per què Infotic"** |
-| 5–25 s | "Jo venia de [X anys] al sector. I em vaig adonar que les PIMEs catalanes estaven esperant a ser hackejades. No perquè fossin descuidades — perquè ningú els ho explicava en cristià." | Plans de B-roll: pantalla d'ordinador, equip treballant, mans escrivint. |
+| 5–25 s | "Jo portava [X anys] al sector. I em vaig adonar que les PIMEs catalanes estaven esperant a ser hackejades. No perquè fossin descuidades — perquè ningú els ho explicava en cristià." | Plans de B-roll: pantalla d'ordinador, equip treballant, mans escrivint. |
 | 25–50 s | "El primer client va ser [tipus d'empresa]. Tenien [problema concret]. Ho vam tancar en [X temps]. I quan vaig veure la cara de tranquil·litat del director, vaig saber que això era el que volia fer." | Plans del despatx d'Infotic, possiblement una foto antiga del primer dia. |
 | 50–70 s | "Avui som [X persones / X clients] i seguim amb la mateixa idea: traduir el mal rotllo de la ciberseguretat al llenguatge del director. Si això et sona, segueix-nos." | Pla equip + logo + text overlay: **"Segueix-nos per traduccions en cristià"** |
 
@@ -310,7 +310,7 @@ Un sol client, 60 s, en format "abans / treball / després". Ho gravem amb un so
 >
 > Quan arribi — i arribarà, comencen aquest any en sectors regulats — no et demanaran que demostris que no t'han hackejat. Et demanaran que demostris que **has actuat amb diligència**. Que tenies un pla. Unes mesures bàsiques. Una formació al personal. Una evidència signada.
 >
-> Si tens això, encara que algun dia passi algo, **et salva**. Si no ho tens, encara que mai et passi res, **et multen igual**."
+> Si tens això, encara que algun dia passi alguna cosa, **et salva**. Si no ho tens, encara que mai et passi res, **et multen igual**."
 
 *Text overlay:* **"No et salva no haver tingut problemes. Et salva PODER DEMOSTRAR què tenies."**
 
