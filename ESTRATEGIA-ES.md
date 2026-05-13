@@ -213,7 +213,7 @@ Los 3 reels que deben estar fijados en el perfil de @infotic.studio. Todos verti
 | 0–5 s | "Hola, soy Ramón. Te voy a contar por qué montamos Infotic, porque no fue por casualidad." | Primer plano fundador, oficina al fondo. Texto overlay: **"Por qué Infotic"** |
 | 5–25 s | "Yo llevaba [X años] en el sector. Y me di cuenta de que las pymes catalanas estaban esperando a ser hackeadas. No porque fueran descuidadas — porque nadie se lo explicaba en cristiano." | Planos de B-roll: pantalla de ordenador, equipo trabajando, manos escribiendo. |
 | 25–50 s | "El primer cliente fue [tipo de empresa]. Tenían [problema concreto]. Lo cerramos en [X tiempo]. Y cuando vi la cara de tranquilidad del director, supe que esto era lo que quería hacer." | Planos del despacho de Infotic, posiblemente una foto antigua del primer día. |
-| 50–70 s | "Hoy somos [X personas / X clientes] y seguimos con la misma idea: traducir el mal rollo de la ciberseguridad al lenguaje del director. Si esto te suena, síguenos." | Plano equipo + logo + texto overlay: **"Síguenos para traducciones en cristiano"** |
+| 50–70 s | "Hoy somos [X personas / X clientes] y seguimos con la misma idea: traducir el mal rollo de la ciberseguridad al lenguaje del director. Si esto te resuena, síguenos." | Plano equipo + logo + texto overlay: **"Síguenos para traducciones en cristiano"** |
 
 **⚠ Necesito de ti:** año de fundación, número de empleados/clientes actuales, anécdota del primer cliente (sin violar NDA).
 

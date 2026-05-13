@@ -213,7 +213,7 @@ Els 3 reels que han d'estar fixats al perfil d'@infotic.studio. Tots verticals, 
 | 0–5 s | "Hola, soc en Ramón. Et vull explicar per què vam muntar Infotic, perquè no va ser per casualitat." | Primer pla fundador, oficina al fons. Text overlay: **"Per què Infotic"** |
 | 5–25 s | "Jo portava [X anys] al sector. I em vaig adonar que les PIMEs catalanes estaven esperant a ser hackejades. No perquè fossin descuidades — perquè ningú els ho explicava en cristià." | Plans de B-roll: pantalla d'ordinador, equip treballant, mans escrivint. |
 | 25–50 s | "El primer client va ser [tipus d'empresa]. Tenien [problema concret]. Ho vam tancar en [X temps]. I quan vaig veure la cara de tranquil·litat del director, vaig saber que això era el que volia fer." | Plans del despatx d'Infotic, possiblement una foto antiga del primer dia. |
-| 50–70 s | "Avui som [X persones / X clients] i seguim amb la mateixa idea: traduir el mal rotllo de la ciberseguretat al llenguatge del director. Si això et sona, segueix-nos." | Pla equip + logo + text overlay: **"Segueix-nos per traduccions en cristià"** |
+| 50–70 s | "Avui som [X persones / X clients] i seguim amb la mateixa idea: traduir el mal rotllo de la ciberseguretat al llenguatge del director. Si això et resona, segueix-nos." | Pla equip + logo + text overlay: **"Segueix-nos per traduccions en cristià"** |
 
 **⚠ Necessito de tu:** any de fundació, número d'empleats/clients actuals, anècdota del primer client (sense violar NDA).
 
