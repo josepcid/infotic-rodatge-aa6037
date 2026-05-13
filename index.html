@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Infotic · Rodatge divendres</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --ink:#0F172A; --ink-soft:#475569; --line:#E2E8F0; --bg:#F8FAFC;
+    --brand:#195DE1; --brand-soft:#EBF2FF;
+  }
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:32px 18px}
+  .wrap{max-width:640px;width:100%}
+  .brand{font-size:12px;font-weight:700;color:var(--brand);letter-spacing:.8px;text-transform:uppercase;margin-bottom:10px}
+  h1{font-size:32px;font-weight:700;letter-spacing:-.5px;line-height:1.15;margin-bottom:10px}
+  .sub{color:var(--ink-soft);font-size:15px;margin-bottom:28px;max-width:54ch}
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media (max-width:560px){.cards{grid-template-columns:1fr}}
+  .card{display:block;background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 22px;text-decoration:none;color:var(--ink);transition:all .15s ease}
+  .card:hover{border-color:var(--brand);transform:translateY(-2px);box-shadow:0 6px 20px rgba(25,93,225,.08)}
+  .card .ic{font-size:24px;margin-bottom:10px;display:inline-flex;width:42px;height:42px;background:var(--brand-soft);border-radius:10px;align-items:center;justify-content:center;color:var(--brand)}
+  .card h3{font-size:17px;font-weight:700;margin-bottom:6px}
+  .card p{font-size:13px;color:var(--ink-soft);line-height:1.5}
+  .card .go{display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-size:12px;font-weight:600;color:var(--brand)}
+  footer{margin-top:32px;font-size:12px;color:var(--ink-soft)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="brand">Infotic · Rodatge</div>
+  <h1>Materials per a la sessió de divendres</h1>
+  <p class="sub">Tot el que necessites en dos enllaços: el pla del dia i el llibret de copys per gravar.</p>
+
+  <div class="cards">
+    <a class="card" href="plan-rodatge.html">
+      <div class="ic">📋</div>
+      <h3>Pla de rodatge</h3>
+      <p>Timeline del dia, checklist de preparació, banc de B-roll i material a portar.</p>
+      <div class="go">Obrir →</div>
+    </a>
+    <a class="card" href="copys.html">
+      <div class="ic">📝</div>
+      <h3>Copys per gravar</h3>
+      <p>4 ads · 3 reels · VSL complet · 2 posts. Català i castellà amb botó de copiar.</p>
+      <div class="go">Obrir →</div>
+    </a>
+  </div>
+
+  <footer>Josep Cid · josepcid.com</footer>
+</div>
+</body>
+</html>

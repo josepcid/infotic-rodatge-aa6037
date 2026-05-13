@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pla de rodatge · Infotic · Divendres 15 maig 2026</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --ink:#0F172A; --ink-soft:#475569; --line:#E2E8F0; --bg:#F8FAFC;
+    --brand:#195DE1; --brand-soft:#EBF2FF;
+    --ok:#059669; --ok-soft:#ECFDF5;
+    --warn:#D97706; --warn-soft:#FEF3C7;
+  }
+  html{-webkit-text-size-adjust:100%}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55;font-size:16px}
+  .page{max-width:880px;margin:0 auto;padding:20px 18px 80px}
+
+  /* Header */
+  header{position:sticky;top:0;background:var(--bg);padding:14px 0 12px;border-bottom:1px solid var(--line);z-index:10;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  .brand{font-size:13px;font-weight:700;color:var(--brand);letter-spacing:.6px;text-transform:uppercase}
+  .brand small{display:block;color:var(--ink-soft);font-weight:500;font-size:11px;letter-spacing:.4px;text-transform:none;margin-top:2px}
+  .actions{display:flex;gap:8px;align-items:center}
+  .toggle{display:inline-flex;background:#fff;border:1px solid var(--line);border-radius:8px;padding:3px;font-size:13px;font-weight:600}
+  .toggle button{border:none;background:transparent;padding:6px 12px;border-radius:6px;cursor:pointer;color:var(--ink-soft);font-family:inherit}
+  .toggle button.on{background:var(--brand);color:#fff}
+  .print-btn{border:1px solid var(--line);background:#fff;border-radius:8px;padding:7px 12px;cursor:pointer;font-size:13px;color:var(--ink);font-family:inherit}
+
+  /* Hero */
+  .hero{padding:28px 0 22px}
+  .hero h1{font-size:30px;line-height:1.15;font-weight:700;letter-spacing:-.5px;margin-bottom:10px}
+  .hero .meta{display:flex;gap:18px;flex-wrap:wrap;font-size:14px;color:var(--ink-soft)}
+  .hero .meta b{color:var(--ink)}
+
+  /* Summary tiles */
+  .summary{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0 8px}
+  .tile{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+  .tile .lbl{font-size:11px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.6px;margin-bottom:4px}
+  .tile .v{font-size:18px;font-weight:700}
+
+  /* Alert */
+  .alert{background:var(--warn-soft);border:1px solid #FCD34D;border-radius:10px;padding:14px 16px;margin:18px 0;display:flex;gap:10px;align-items:flex-start;font-size:14px}
+  .alert .ic{font-size:18px;line-height:1}
+  .alert b{display:block;margin-bottom:3px}
+
+  /* Sections */
+  section{margin-top:26px}
+  h2{font-size:18px;font-weight:700;letter-spacing:-.2px;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid var(--ink);display:inline-block}
+
+  /* Timeline */
+  .timeline{display:flex;flex-direction:column;gap:8px}
+  .block{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;display:flex;gap:14px}
+  .block .time{flex-shrink:0;width:90px;font-size:13px;font-weight:700;color:var(--brand)}
+  .block .time small{display:block;color:var(--ink-soft);font-weight:500;font-size:11px;margin-top:2px}
+  .block .body h3{font-size:15px;font-weight:700;margin-bottom:6px}
+  .block .body p{font-size:13px;color:var(--ink-soft);margin-bottom:8px}
+  .block ol,.block ul{list-style:none;padding:0;font-size:13px}
+  .block li{padding:3px 0 3px 16px;position:relative;line-height:1.5}
+  .block li::before{content:"›";color:var(--brand);font-weight:700;position:absolute;left:0}
+  .block.pause{background:var(--bg);border-style:dashed;padding:10px 18px;color:var(--ink-soft);font-size:13px;font-style:italic}
+
+  /* Grid preparativos */
+  .prep{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+  .card h3{font-size:13px;font-weight:700;color:var(--brand);text-transform:uppercase;letter-spacing:.6px;margin-bottom:10px}
+  .card label{display:flex;align-items:flex-start;gap:8px;font-size:13px;padding:5px 0;cursor:pointer;line-height:1.5}
+  .card input[type=checkbox]{margin-top:4px;flex-shrink:0;width:15px;height:15px;accent-color:var(--brand);cursor:pointer}
+  .card label.done{text-decoration:line-through;color:var(--ink-soft)}
+
+  /* B-roll grid */
+  .broll{display:grid;grid-template-columns:repeat(2,1fr);gap:6px 14px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 18px}
+  .broll label{display:flex;align-items:flex-start;gap:8px;font-size:13px;padding:5px 0;cursor:pointer;line-height:1.5}
+  .broll input[type=checkbox]{margin-top:4px;flex-shrink:0;width:15px;height:15px;accent-color:var(--brand);cursor:pointer}
+  .broll label.done{text-decoration:line-through;color:var(--ink-soft)}
+
+  /* Output box */
+  .output{background:var(--ok-soft);border:1px solid #A7F3D0;border-radius:10px;padding:16px 18px}
+  .output ul{list-style:none;padding:0}
+  .output li{padding:5px 0 5px 22px;position:relative;font-size:14px}
+  .output li::before{content:"✓";color:var(--ok);font-weight:700;position:absolute;left:0;font-size:15px}
+
+  /* Hide by language */
+  [data-lang]{display:none}
+  body.ca [data-lang="ca"]{display:block}
+  body.es [data-lang="es"]{display:block}
+  body.ca .toggle [data-id="ca"],body.es .toggle [data-id="es"]{background:var(--brand);color:#fff}
+  /* inline span */
+  body.ca span[data-lang="ca"],body.es span[data-lang="es"]{display:inline}
+
+  /* Mobile */
+  @media (max-width:680px){
+    .hero h1{font-size:24px}
+    .summary{grid-template-columns:1fr}
+    .prep{grid-template-columns:1fr}
+    .broll{grid-template-columns:1fr}
+    .block{flex-direction:column;gap:6px}
+    .block .time{width:auto}
+  }
+
+  /* Print */
+  @media print{
+    body{background:#fff;color:#000;font-size:12px}
+    .page{max-width:none;padding:0}
+    header{position:static;border:none;padding:0 0 8px}
+    .actions{display:none}
+    section{page-break-inside:avoid;margin-top:18px}
+    .block{break-inside:avoid;border:1px solid #ccc}
+    .alert{border:1px solid #999;background:#fff}
+    .output{border:1px solid #999;background:#fff}
+    h2{border-color:#000}
+    .card,.tile,.broll{border:1px solid #ccc}
+  }
+</style>
+</head>
+<body class="ca">
+
+<div class="page">
+
+<header>
+  <div class="brand">Infotic · Rodatge<small data-lang="ca">Divendres 15 maig 2026</small><small data-lang="es">Viernes 15 mayo 2026</small></div>
+  <div class="actions">
+    <div class="toggle">
+      <button data-id="ca" onclick="setLang('ca')">CA</button>
+      <button data-id="es" onclick="setLang('es')">ES</button>
+    </div>
+    <button class="print-btn" onclick="window.print()">⎙ Imprimir</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <h1 data-lang="ca">Pla de rodatge<br>oficina Infotic</h1>
+  <h1 data-lang="es">Plan de rodaje<br>oficina Infotic</h1>
+  <div class="meta">
+    <span data-lang="ca"><b>📅</b> Divendres 15 maig 2026</span>
+    <span data-lang="es"><b>📅</b> Viernes 15 mayo 2026</span>
+    <span><b>🕘</b> 09:00–18:30</span>
+    <span data-lang="ca"><b>📍</b> Oficina Infotic (4 punts)</span>
+    <span data-lang="es"><b>📍</b> Oficina Infotic (4 puntos)</span>
+  </div>
+</div>
+
+<!-- SUMMARY -->
+<div class="summary">
+  <div class="tile">
+    <div class="lbl" data-lang="ca">Sortim amb</div>
+    <div class="lbl" data-lang="es">Salimos con</div>
+    <div class="v" data-lang="ca">8 ads · 3 reels · 1 VSL</div>
+    <div class="v" data-lang="es">8 ads · 3 reels · 1 VSL</div>
+  </div>
+  <div class="tile">
+    <div class="lbl" data-lang="ca">Banc B-roll</div>
+    <div class="lbl" data-lang="es">Banco B-roll</div>
+    <div class="v" data-lang="ca">+11 recursos</div>
+    <div class="v" data-lang="es">+11 recursos</div>
+  </div>
+  <div class="tile">
+    <div class="lbl" data-lang="ca">Cobertura contingut</div>
+    <div class="lbl" data-lang="es">Cobertura contenido</div>
+    <div class="v">60–90 dies</div>
+  </div>
+</div>
+
+<!-- ALERT -->
+<div class="alert">
+  <div class="ic">⚠️</div>
+  <div>
+    <div data-lang="ca"><b>Decisió pendent · avui</b>Si no confirmes 2-3 clients per a testimonials del divendres abans de demà matí, ajornem el Reel 3 i alliberem el Bloc 4 per a takes extres. Millor ajornar que gravar un sol testimoni dèbil.</div>
+    <div data-lang="es"><b>Decisión pendiente · hoy</b>Si no confirmas 2-3 clientes para testimonios del viernes antes de mañana por la mañana, aplazamos el Reel 3 y liberamos el Bloque 4 para takes extras. Mejor aplazar que grabar un solo testimonio débil.</div>
+  </div>
+</div>
+
+<!-- TIMELINE -->
+<section>
+  <h2 data-lang="ca">Timeline del dia</h2>
+  <h2 data-lang="es">Timeline del día</h2>
+  <div class="timeline">
+
+    <div class="block">
+      <div class="time">09:00–12:30<small data-lang="ca">Bloc 1</small><small data-lang="es">Bloque 1</small></div>
+      <div class="body">
+        <h3 data-lang="ca">Talking heads del fundador · Punt A</h3>
+        <h3 data-lang="es">Talking heads del fundador · Punto A</h3>
+        <p data-lang="ca">Mateix enquadrament, vestuari 1, fons net. De més curt a més llarg per escalfar veu.</p>
+        <p data-lang="es">Mismo encuadre, vestuario 1, fondo limpio. De más corto a más largo para calentar voz.</p>
+        <ol data-lang="ca">
+          <li><b>4 hooks Meta Ads</b> · 2 takes per angle = 8 takes (5-10 min)</li>
+          <li><b>4 cossos Meta Ads</b> · 30-40 s cada un, 2 takes (45 min)</li>
+          <li><b>VSL complet</b> · 8 seccions seguides, 2 takes hook+CTA (45 min)</li>
+          <li><b>Reel 1 · Història</b> · 60-75 s, 2 takes (15 min)</li>
+        </ol>
+        <ol data-lang="es">
+          <li><b>4 hooks Meta Ads</b> · 2 takes por ángulo = 8 takes (5-10 min)</li>
+          <li><b>4 cuerpos Meta Ads</b> · 30-40 s cada uno, 2 takes (45 min)</li>
+          <li><b>VSL completo</b> · 8 secciones seguidas, 2 takes hook+CTA (45 min)</li>
+          <li><b>Reel 1 · Historia</b> · 60-75 s, 2 takes (15 min)</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="block pause" data-lang="ca">☕ Pausa cafè · 12:30–12:45</div>
+    <div class="block pause" data-lang="es">☕ Pausa café · 12:30–12:45</div>
+
+    <div class="block">
+      <div class="time">12:45–14:00<small data-lang="ca">Bloc 2</small><small data-lang="es">Bloque 2</small></div>
+      <div class="body">
+        <h3 data-lang="ca">Pissarra i procés · Punt C</h3>
+        <h3 data-lang="es">Pizarra y proceso · Punto C</h3>
+        <p data-lang="ca">Canvi a vestuari 2 (look més proper). El mètode dels 4 passos a càmera.</p>
+        <p data-lang="es">Cambio a vestuario 2 (look más cercano). El método de los 4 pasos a cámara.</p>
+        <ol data-lang="ca">
+          <li><b>Reel 2 · Com treballem</b> · 75-90 s, 2 takes (30 min)</li>
+          <li><b>B-roll mètode</b> · mà escrivint, primers plans, checklist (15 min)</li>
+          <li><b>VSL pla cobertura</b> · fundador davant pissarra (10 min)</li>
+        </ol>
+        <ol data-lang="es">
+          <li><b>Reel 2 · Cómo trabajamos</b> · 75-90 s, 2 takes (30 min)</li>
+          <li><b>B-roll método</b> · mano escribiendo, primeros planos, checklist (15 min)</li>
+          <li><b>VSL plano cobertura</b> · fundador frente a pizarra (10 min)</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="block pause" data-lang="ca">🥗 Pausa dinar · 14:00–15:00</div>
+    <div class="block pause" data-lang="es">🥗 Pausa comida · 14:00–15:00</div>
+
+    <div class="block">
+      <div class="time">15:00–16:30<small data-lang="ca">Bloc 3</small><small data-lang="es">Bloque 3</small></div>
+      <div class="body">
+        <h3 data-lang="ca">Banc de B-roll i plans simbòlics</h3>
+        <h3 data-lang="es">Banco de B-roll y planos simbólicos</h3>
+        <p data-lang="ca">Ja no parla. Tot el banc d'imatges per a cobrir veus en off i tallar talking heads. Checklist completa a baix.</p>
+        <p data-lang="es">Ya no habla. Todo el banco de imágenes para cubrir voces en off y cortar talking heads. Checklist completo abajo.</p>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="time">16:30–18:30<small data-lang="ca">Bloc 4</small><small data-lang="es">Bloque 4</small></div>
+      <div class="body">
+        <h3 data-lang="ca">Reel testimonis · només si hi ha clients confirmats</h3>
+        <h3 data-lang="es">Reel testimonios · solo si hay clientes confirmados</h3>
+        <p data-lang="ca">Citacions escalonades de 20 min: 5 set-up + 10 preguntes obertes + 5 B-roll. Sense guió llegit.</p>
+        <p data-lang="es">Citas escalonadas de 20 min: 5 set-up + 10 preguntas abiertas + 5 B-roll. Sin guión leído.</p>
+        <ul data-lang="ca">
+          <li>"Per què vau venir a Infotic?"</li>
+          <li>"Què teniu ara que abans no teníeu?"</li>
+          <li>"Què li diries a algú com tu que dubta?"</li>
+        </ul>
+        <ul data-lang="es">
+          <li>"¿Por qué vinisteis a Infotic?"</li>
+          <li>"¿Qué tenéis ahora que antes no teníais?"</li>
+          <li>"¿Qué le dirías a alguien como tú que duda?"</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PREPARATIVOS -->
+<section>
+  <h2 data-lang="ca">Què porta Infotic</h2>
+  <h2 data-lang="es">Qué trae Infotic</h2>
+  <div class="prep">
+
+    <div class="card">
+      <h3 data-lang="ca">Vestuari</h3>
+      <h3 data-lang="es">Vestuario</h3>
+      <div data-lang="ca">
+        <label><input type="checkbox" data-id="v1"> Outfit 1 (camisa o jersei llis)</label>
+        <label><input type="checkbox" data-id="v2"> Outfit 2 (polo o samarreta proper)</label>
+        <label><input type="checkbox" data-id="v3"> Ulleres habituals si les portes</label>
+        <label><input type="checkbox" data-id="v4"> Sense estrenes de pentinat</label>
+      </div>
+      <div data-lang="es">
+        <label><input type="checkbox" data-id="v1"> Outfit 1 (camisa o jersey liso)</label>
+        <label><input type="checkbox" data-id="v2"> Outfit 2 (polo o camiseta cercano)</label>
+        <label><input type="checkbox" data-id="v3"> Gafas habituales si las llevas</label>
+        <label><input type="checkbox" data-id="v4"> Sin estrenos de peinado</label>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 data-lang="ca">Material físic</h3>
+      <h3 data-lang="es">Material físico</h3>
+      <div data-lang="ca">
+        <label><input type="checkbox" data-id="m1"> Carpeta Evidències NIS2 amb logo (objecte heroi)</label>
+        <label><input type="checkbox" data-id="m2"> Captura BOE/ENS NIS2 impresa A4</label>
+        <label><input type="checkbox" data-id="m3"> Pissarra amb mètode 4 passos escrits</label>
+        <label><input type="checkbox" data-id="m4"> Checklist visible: auditoria · pla · backups · formació</label>
+        <label><input type="checkbox" data-id="m5"> Tablet/portàtil amb dashboard tècnic preparat</label>
+        <label><input type="checkbox" data-id="m6"> Joc de claus d'oficina</label>
+      </div>
+      <div data-lang="es">
+        <label><input type="checkbox" data-id="m1"> Carpeta Evidencias NIS2 con logo (objeto héroe)</label>
+        <label><input type="checkbox" data-id="m2"> Captura BOE/ENS NIS2 impresa A4</label>
+        <label><input type="checkbox" data-id="m3"> Pizarra con método 4 pasos escritos</label>
+        <label><input type="checkbox" data-id="m4"> Checklist visible: auditoría · plan · backups · formación</label>
+        <label><input type="checkbox" data-id="m5"> Tablet/portátil con dashboard técnico preparado</label>
+        <label><input type="checkbox" data-id="m6"> Juego de llaves de oficina</label>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 data-lang="ca">Persones i permisos</h3>
+      <h3 data-lang="es">Personas y permisos</h3>
+      <div data-lang="ca">
+        <label><input type="checkbox" data-id="p1"> Fundador disponible tot el dia</label>
+        <label><input type="checkbox" data-id="p2"> 1-2 membres equip per B-roll natural</label>
+        <label><input type="checkbox" data-id="p3"> 2-3 clients confirmats (si fem testimonials)</label>
+        <label><input type="checkbox" data-id="p4"> Model release imprès per signar a porta</label>
+        <label><input type="checkbox" data-id="p5"> Permís de logo signat de clients al VSL</label>
+      </div>
+      <div data-lang="es">
+        <label><input type="checkbox" data-id="p1"> Fundador disponible todo el día</label>
+        <label><input type="checkbox" data-id="p2"> 1-2 miembros equipo para B-roll natural</label>
+        <label><input type="checkbox" data-id="p3"> 2-3 clientes confirmados (si hacemos testimonios)</label>
+        <label><input type="checkbox" data-id="p4"> Model release impreso para firmar en puerta</label>
+        <label><input type="checkbox" data-id="p5"> Permiso de logo firmado de clientes en el VSL</label>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- B-ROLL -->
+<section>
+  <h2 data-lang="ca">Checklist B-roll · Bloc 3</h2>
+  <h2 data-lang="es">Checklist B-roll · Bloque 3</h2>
+  <div class="broll" data-lang="ca">
+    <label><input type="checkbox" data-id="b1"> Mans escrivint a teclat</label>
+    <label><input type="checkbox" data-id="b2"> Pantalla dashboard (sense dades sensibles)</label>
+    <label><input type="checkbox" data-id="b3"> Telèfon sonant sobre taula</label>
+    <label><input type="checkbox" data-id="b4"> Persona caminant per oficina (sense cara)</label>
+    <label><input type="checkbox" data-id="b5"> Carpeta Evidències · 3 angles (tancada, oberta, fullejant)</label>
+    <label><input type="checkbox" data-id="b6"> Captura BOE NIS2 sobre taula</label>
+    <label><input type="checkbox" data-id="b7"> Porta oficina amb clauer a la mà</label>
+    <label><input type="checkbox" data-id="b8"> Pantalla negra "files encrypted"</label>
+    <label><input type="checkbox" data-id="b9"> Logos clients (només amb permís)</label>
+    <label><input type="checkbox" data-id="b10"> Fundador caminant per oficina</label>
+    <label><input type="checkbox" data-id="b11"> Fundador davant pissarra assenyalant</label>
+  </div>
+  <div class="broll" data-lang="es">
+    <label><input type="checkbox" data-id="b1"> Manos escribiendo en teclado</label>
+    <label><input type="checkbox" data-id="b2"> Pantalla dashboard (sin datos sensibles)</label>
+    <label><input type="checkbox" data-id="b3"> Teléfono sonando sobre mesa</label>
+    <label><input type="checkbox" data-id="b4"> Persona caminando por oficina (sin cara)</label>
+    <label><input type="checkbox" data-id="b5"> Carpeta Evidencias · 3 ángulos (cerrada, abierta, hojeando)</label>
+    <label><input type="checkbox" data-id="b6"> Captura BOE NIS2 sobre mesa</label>
+    <label><input type="checkbox" data-id="b7"> Puerta oficina con llavero en mano</label>
+    <label><input type="checkbox" data-id="b8"> Pantalla negra "files encrypted"</label>
+    <label><input type="checkbox" data-id="b9"> Logos clientes (solo con permiso)</label>
+    <label><input type="checkbox" data-id="b10"> Fundador caminando por oficina</label>
+    <label><input type="checkbox" data-id="b11"> Fundador frente a pizarra señalando</label>
+  </div>
+</section>
+
+<!-- TECH -->
+<section>
+  <h2 data-lang="ca">Equip tècnic</h2>
+  <h2 data-lang="es">Equipo técnico</h2>
+  <div class="prep">
+    <div class="card" style="grid-column:span 3">
+      <h3 data-lang="ca">Què porta cadascú</h3>
+      <h3 data-lang="es">Qué trae cada uno</h3>
+      <div data-lang="ca" style="font-size:13px;line-height:1.7">
+        <b>Equip rodatge:</b> mirrorless 4K · objectius 24-70 + 50mm · micro solapa wireless + recorder backup · key light + fill + reflector · trípode + gimbal · disc backup<br>
+        <b>Infotic:</b> teleprompter (app al mòbil/tablet) · carpeta Evidències física · material gràfic (BOE, checklist, pissarra)
+      </div>
+      <div data-lang="es" style="font-size:13px;line-height:1.7">
+        <b>Equipo rodaje:</b> mirrorless 4K · objetivos 24-70 + 50mm · micro solapa wireless + recorder backup · key light + fill + reflector · trípode + gimbal · disco backup<br>
+        <b>Infotic:</b> teleprompter (app en móvil/tablet) · carpeta Evidencias física · material gráfico (BOE, checklist, pizarra)
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHECKLIST DIJOUS -->
+<section>
+  <h2 data-lang="ca">Checklist dijous tarda</h2>
+  <h2 data-lang="es">Checklist jueves tarde</h2>
+  <div class="card" data-lang="ca">
+    <label><input type="checkbox" data-id="d1"> Vestuari planxat</label>
+    <label><input type="checkbox" data-id="d2"> Carpeta Evidències mock-up acabada</label>
+    <label><input type="checkbox" data-id="d3"> BOE imprès</label>
+    <label><input type="checkbox" data-id="d4"> Pissarra neta amb mètode escrit</label>
+    <label><input type="checkbox" data-id="d5"> Teleprompter carregat amb tots els textos</label>
+    <label><input type="checkbox" data-id="d6"> Equip rodatge confirmat (08:30 muntatge)</label>
+    <label><input type="checkbox" data-id="d7"> Esmorzar i dinar previstos in situ</label>
+    <label><input type="checkbox" data-id="d8"> Testimonials confirmats per WhatsApp 24h abans</label>
+    <label><input type="checkbox" data-id="d9"> Model release i permisos impresos</label>
+    <label><input type="checkbox" data-id="d10"> Telèfon en silenci, agenda bloquejada</label>
+  </div>
+  <div class="card" data-lang="es">
+    <label><input type="checkbox" data-id="d1"> Vestuario planchado</label>
+    <label><input type="checkbox" data-id="d2"> Carpeta Evidencias mock-up terminada</label>
+    <label><input type="checkbox" data-id="d3"> BOE impreso</label>
+    <label><input type="checkbox" data-id="d4"> Pizarra limpia con método escrito</label>
+    <label><input type="checkbox" data-id="d5"> Teleprompter cargado con todos los textos</label>
+    <label><input type="checkbox" data-id="d6"> Equipo rodaje confirmado (08:30 montaje)</label>
+    <label><input type="checkbox" data-id="d7"> Desayuno y comida previstos in situ</label>
+    <label><input type="checkbox" data-id="d8"> Testimonios confirmados por WhatsApp 24h antes</label>
+    <label><input type="checkbox" data-id="d9"> Model release y permisos impresos</label>
+    <label><input type="checkbox" data-id="d10"> Teléfono en silencio, agenda bloqueada</label>
+  </div>
+</section>
+
+<!-- OUTPUT -->
+<section>
+  <h2 data-lang="ca">Què sortim portant a casa</h2>
+  <h2 data-lang="es">Qué nos llevamos a casa</h2>
+  <div class="output">
+    <ul data-lang="ca">
+      <li>8 takes de 4 angles Meta Ads (4 anuncis mare amb variants A/B)</li>
+      <li>Reel 1 — Història (2 takes)</li>
+      <li>Reel 2 — Com treballem (2 takes + B-roll pissarra)</li>
+      <li>Reel 3 — Testimonis (si hi ha clients confirmats)</li>
+      <li>VSL complet en català (opcional ES extra 30 min)</li>
+      <li>Banc de B-roll amb 11+ recursos per a edicions futures</li>
+    </ul>
+    <ul data-lang="es">
+      <li>8 takes de 4 ángulos Meta Ads (4 anuncios madre con variantes A/B)</li>
+      <li>Reel 1 — Historia (2 takes)</li>
+      <li>Reel 2 — Cómo trabajamos (2 takes + B-roll pizarra)</li>
+      <li>Reel 3 — Testimonios (si hay clientes confirmados)</li>
+      <li>VSL completo en catalán (opcional ES extra 30 min)</li>
+      <li>Banco de B-roll con 11+ recursos para ediciones futuras</li>
+    </ul>
+  </div>
+</section>
+
+</div>
+
+<script>
+function setLang(l){
+  document.body.classList.remove('ca','es');
+  document.body.classList.add(l);
+  localStorage.setItem('infotic-plan-lang',l);
+}
+(function init(){
+  var saved = localStorage.getItem('infotic-plan-lang');
+  if (saved) setLang(saved);
+
+  document.querySelectorAll('input[type=checkbox][data-id]').forEach(function(cb){
+    var key = 'infotic-plan-' + cb.dataset.id;
+    if (localStorage.getItem(key) === '1') {
+      cb.checked = true;
+      cb.parentElement.classList.add('done');
+    }
+    cb.addEventListener('change', function(){
+      // sync all checkboxes with same data-id (CA/ES sides)
+      document.querySelectorAll('input[data-id="'+cb.dataset.id+'"]').forEach(function(other){
+        other.checked = cb.checked;
+        other.parentElement.classList.toggle('done', cb.checked);
+      });
+      localStorage.setItem(key, cb.checked ? '1' : '0');
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

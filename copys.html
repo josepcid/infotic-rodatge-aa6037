@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Infotic · Copys per gravar</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --ink:#0F172A; --ink-soft:#475569; --line:#E2E8F0; --bg:#F8FAFC;
+    --brand:#195DE1; --brand-soft:#EBF2FF;
+    --pill:#F1F5F9;
+  }
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;font-size:17px}
+  .wrap{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:260px 1fr;gap:0}
+
+  /* SIDEBAR */
+  aside{background:#fff;border-right:1px solid var(--line);padding:22px 18px;position:sticky;top:0;height:100vh;overflow-y:auto}
+  .brand{font-size:13px;font-weight:700;color:var(--brand);letter-spacing:.7px;text-transform:uppercase;margin-bottom:4px}
+  .brand small{display:block;color:var(--ink-soft);font-weight:500;font-size:11px;letter-spacing:.4px;text-transform:none;margin-top:2px}
+  .toggle{display:inline-flex;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:3px;font-size:12px;font-weight:600;margin:14px 0 22px}
+  .toggle button{border:none;background:transparent;padding:5px 11px;border-radius:5px;cursor:pointer;color:var(--ink-soft);font-family:inherit}
+  body.ca .toggle button[data-id="ca"],body.es .toggle button[data-id="es"]{background:var(--brand);color:#fff}
+  nav .grp{font-size:10px;font-weight:700;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.8px;margin:16px 0 6px;padding:0 6px}
+  nav a{display:block;padding:7px 8px;border-radius:6px;color:var(--ink);text-decoration:none;font-size:13px;line-height:1.4}
+  nav a:hover{background:var(--bg)}
+  nav a .num{display:inline-block;color:var(--ink-soft);font-weight:600;margin-right:6px}
+
+  /* MAIN */
+  main{padding:36px 56px 80px;max-width:780px}
+  .pageH{margin-bottom:32px}
+  .pageH h1{font-size:32px;font-weight:700;letter-spacing:-.5px;line-height:1.15;margin-bottom:8px}
+  .pageH p{color:var(--ink-soft);font-size:15px;max-width:62ch}
+
+  .piece{background:#fff;border:1px solid var(--line);border-radius:14px;padding:24px 28px;margin-bottom:20px;scroll-margin-top:14px}
+  .piece-h{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;margin-bottom:6px;flex-wrap:wrap}
+  .piece-h h2{font-size:20px;font-weight:700;letter-spacing:-.3px}
+  .piece-h .meta{font-size:12px;color:var(--ink-soft);margin-top:3px}
+  .pill{display:inline-block;background:var(--brand-soft);color:var(--brand);font-size:10px;font-weight:700;padding:3px 10px;border-radius:11px;letter-spacing:.4px;text-transform:uppercase;margin-bottom:8px}
+  .copy-btn{border:1px solid var(--line);background:#fff;border-radius:8px;padding:6px 12px;cursor:pointer;font-size:12px;color:var(--ink);font-family:inherit;font-weight:600;white-space:nowrap}
+  .copy-btn:hover{background:var(--bg);border-color:var(--ink-soft)}
+  .copy-btn.ok{background:var(--brand);color:#fff;border-color:var(--brand)}
+
+  /* COPY BLOCKS */
+  .copy{margin-top:14px}
+  .copy .lbl{font-size:11px;font-weight:700;color:var(--brand);letter-spacing:.6px;text-transform:uppercase;margin-bottom:8px}
+  .copy .txt{font-size:18px;line-height:1.7;color:var(--ink);white-space:pre-wrap;font-family:Georgia,"Times New Roman",serif}
+  .copy + .copy{margin-top:18px;padding-top:18px;border-top:1px dashed var(--line)}
+
+  .vsl-section{border-left:3px solid var(--brand);padding-left:16px;margin-top:18px}
+  .vsl-section:first-of-type{margin-top:14px}
+  .vsl-section .lbl{font-size:11px;font-weight:700;color:var(--brand);letter-spacing:.6px;text-transform:uppercase;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center}
+  .vsl-section .lbl span{color:var(--ink-soft);font-weight:600}
+  .vsl-section .txt{font-size:18px;line-height:1.7;font-family:Georgia,"Times New Roman",serif}
+
+  .questions{list-style:none;padding:0;margin-top:8px}
+  .questions li{padding:10px 16px;background:var(--bg);border-radius:8px;margin-bottom:6px;font-size:17px;font-family:Georgia,"Times New Roman",serif}
+
+  /* LANG */
+  [data-lang]{display:none}
+  body.ca [data-lang="ca"]{display:block}
+  body.es [data-lang="es"]{display:block}
+  body.ca .copy[data-lang="ca"],body.es .copy[data-lang="es"]{display:block}
+  body.ca .vsl-section[data-lang="ca"],body.es .vsl-section[data-lang="es"]{display:block}
+
+  /* Mobile */
+  @media (max-width:900px){
+    .wrap{grid-template-columns:1fr}
+    aside{position:static;height:auto;border-right:none;border-bottom:1px solid var(--line);padding:16px}
+    nav{display:flex;flex-wrap:wrap;gap:4px}
+    nav .grp{width:100%;margin:8px 0 2px}
+    nav a{font-size:12px;padding:5px 9px;background:var(--bg)}
+    main{padding:22px 18px 60px}
+    .pageH h1{font-size:24px}
+    .piece{padding:18px 18px}
+    .copy .txt,.vsl-section .txt{font-size:17px}
+  }
+
+  /* Print */
+  @media print{
+    body{background:#fff;font-size:14px}
+    .wrap{grid-template-columns:1fr;display:block}
+    aside{display:none}
+    main{padding:0;max-width:none}
+    .piece{break-inside:avoid;page-break-inside:avoid;border:1px solid #ccc;box-shadow:none}
+    .copy-btn{display:none}
+  }
+</style>
+</head>
+<body class="ca">
+
+<div class="wrap">
+
+<!-- SIDEBAR -->
+<aside>
+  <div class="brand">Infotic · Copys<small data-lang="ca">Llibret de gravació</small><small data-lang="es">Cuaderno de grabación</small></div>
+  <div class="toggle">
+    <button data-id="ca" onclick="setLang('ca')">CA</button>
+    <button data-id="es" onclick="setLang('es')">ES</button>
+  </div>
+  <nav>
+    <div class="grp" data-lang="ca">Meta Ads</div>
+    <div class="grp" data-lang="es">Meta Ads</div>
+    <a href="#ad1"><span class="num">01</span><span data-lang="ca">Regulatori</span><span data-lang="es">Regulatorio</span></a>
+    <a href="#ad2"><span class="num">02</span><span data-lang="ca">Parada total</span><span data-lang="es">Parada total</span></a>
+    <a href="#ad3"><span class="num">03</span><span data-lang="ca">Efecte dominó</span><span data-lang="es">Efecto dominó</span></a>
+    <a href="#ad4"><span class="num">04</span>Deadline</a>
+
+    <div class="grp" data-lang="ca">Reels fixats IG</div>
+    <div class="grp" data-lang="es">Reels fijados IG</div>
+    <a href="#reel1"><span class="num">05</span><span data-lang="ca">Història</span><span data-lang="es">Historia</span></a>
+    <a href="#reel2"><span class="num">06</span><span data-lang="ca">Com treballem</span><span data-lang="es">Cómo trabajamos</span></a>
+    <a href="#reel3"><span class="num">07</span><span data-lang="ca">Testimonis</span><span data-lang="es">Testimonios</span></a>
+
+    <div class="grp">VSL</div>
+    <a href="#vsl"><span class="num">08</span><span data-lang="ca">VSL complet</span><span data-lang="es">VSL completo</span></a>
+
+    <div class="grp" data-lang="ca">Posts</div>
+    <div class="grp" data-lang="es">Posts</div>
+    <a href="#post-a"><span class="num">09</span><span data-lang="ca">Cos copy A</span><span data-lang="es">Cuerpo copy A</span></a>
+    <a href="#post-b"><span class="num">10</span><span data-lang="ca">Cos copy B</span><span data-lang="es">Cuerpo copy B</span></a>
+  </nav>
+</aside>
+
+<!-- MAIN -->
+<main>
+
+<div class="pageH">
+  <h1 data-lang="ca">Tot el copy a gravar divendres</h1>
+  <h1 data-lang="es">Todo el copy a grabar el viernes</h1>
+  <p data-lang="ca">Només el text que es diu a càmera. Sense indicacions de pla. Cada peça té el seu botó <b>Copiar</b> per pegar directament al teleprompter.</p>
+  <p data-lang="es">Solo el texto que se dice a cámara. Sin indicaciones de plano. Cada pieza tiene su botón <b>Copiar</b> para pegar directamente en el teleprompter.</p>
+</div>
+
+<!-- =============== AD 1 =============== -->
+<div class="piece" id="ad1">
+  <div class="piece-h">
+    <div>
+      <span class="pill" data-lang="ca">Regulatori</span>
+      <span class="pill" data-lang="es">Regulatorio</span>
+      <h2 data-lang="ca">Ad 1 · Qui és el responsable, de veritat</h2>
+      <h2 data-lang="es">Ad 1 · Quién es el responsable, de verdad</h2>
+      <div class="meta" data-lang="ca">30–40 s · 2 takes</div>
+      <div class="meta" data-lang="es">30–40 s · 2 takes</div>
+    </div>
+    <button class="copy-btn" data-copy="ad1">Copiar</button>
+  </div>
+
+  <div class="copy" data-lang="ca">
+    <div class="lbl">Hook</div>
+    <div class="txt">Si demà entren a les dades dels teus clients, qui paga? Spoiler: tu.</div>
+  </div>
+  <div class="copy" data-lang="ca">
+    <div class="lbl">Cos</div>
+    <div class="txt">Molts directors encara pensen que la seguretat informàtica és cosa de l'informàtic. Des de l'octubre passat ja no.
+
+La NIS2 diu, negre sobre blanc, que la responsabilitat és del director de l'empresa. No del proveïdor. No del cunyat que t'ho mira. Teva.
+
+Multes de fins a 10 milions d'euros o el 2% de la facturació. I no t'ho dic per espantar — t'ho dic perquè aquesta setmana hem auditat tres gestories i les tres tenien forats que es resolen en una tarda.
+
+A Infotic et fem una auditoria gratuïta de 30 minuts i et diem exactament què tens i què et falta. Demana-la abans que te la demani Hisenda.</div>
+  </div>
+
+  <div class="copy" data-lang="es">
+    <div class="lbl">Hook</div>
+    <div class="txt">Si mañana entran a los datos de tus clientes, ¿quién paga? Spoiler: tú.</div>
+  </div>
+  <div class="copy" data-lang="es">
+    <div class="lbl">Cuerpo</div>
+    <div class="txt">Muchos directores siguen pensando que la seguridad informática es cosa del informático. Desde octubre pasado ya no.
+
+La NIS2 dice, negro sobre blanco, que la responsabilidad es del director de la empresa. No del proveedor. No del cuñado que te lo mira. Tuya.
+
+Multas de hasta 10 millones de euros o el 2% de la facturación. Y no te lo digo para asustar — te lo digo porque esta semana hemos auditado tres gestorías y las tres tenían agujeros que se resuelven en una tarde.
+
+En Infotic te hacemos una auditoría gratuita de 30 minutos y te decimos exactamente qué tienes y qué te falta. Pídela antes de que te la pida Hacienda.</div>
+  </div>
+</div>
+
+<!-- =============== AD 2 =============== -->
+<div class="piece" id="ad2">
+  <div class="piece-h">
+    <div>
+      <span class="pill" data-lang="ca">Parada total</span>
+      <span class="pill" data-lang="es">Parada total</span>
+      <h2 data-lang="ca">Ad 2 · Quants dies aguantes apagat</h2>
+      <h2 data-lang="es">Ad 2 · Cuántos días aguantas apagado</h2>
+      <div class="meta" data-lang="ca">30–40 s · 2 takes</div>
+      <div class="meta" data-lang="es">30–40 s · 2 takes</div>
+    </div>
+    <button class="copy-btn" data-copy="ad2">Copiar</button>
+  </div>
+
+  <div class="copy" data-lang="ca">
+    <div class="lbl">Hook</div>
+    <div class="txt">Imagina que arribes a l'oficina, encens l'ordinador… i no s'obre res.</div>
+  </div>
+  <div class="copy" data-lang="ca">
+    <div class="lbl">Cos</div>
+    <div class="txt">Ni el correu. Ni l'ERP. Ni les fitxes dels clients. Ni la facturació. Tot encriptat. I un missatge dient-te que si vols recuperar les teves dades, paguis.
+
+Això es diu ransomware i li passa cada setmana a empreses com la teva.
+
+La pregunta no és si et pot passar. La pregunta és quants dies aguanta el teu negoci sense facturar. Tres? Cinc? La mitjana de recuperació, quan no tens res preparat, són 22 dies.
+
+El que fem nosaltres a Infotic és preparar-te perquè aquests 22 dies siguin 2 hores. Et faig una revisió gratuïta del teu sistema i et dic exactament on tens el forat. Apunta't aquí sota.</div>
+  </div>
+
+  <div class="copy" data-lang="es">
+    <div class="lbl">Hook</div>
+    <div class="txt">Imagínate que llegas a la oficina, enciendes el ordenador… y no se abre nada.</div>
+  </div>
+  <div class="copy" data-lang="es">
+    <div class="lbl">Cuerpo</div>
+    <div class="txt">Ni el correo. Ni el ERP. Ni las fichas de los clientes. Ni la facturación. Todo encriptado. Y un mensaje diciéndote que si quieres recuperar tus datos, pagues.
+
+Eso se llama ransomware y le pasa cada semana a empresas como la tuya.
+
+La pregunta no es si te puede pasar. La pregunta es cuántos días aguanta tu negocio sin facturar. ¿Tres? ¿Cinco? La media de recuperación, cuando no tienes nada preparado, son 22 días.
+
+Lo que hacemos nosotros en Infotic es prepararte para que esos 22 días sean 2 horas. Te hago una revisión gratuita de tu sistema y te digo exactamente dónde tienes el agujero. Apúntate aquí abajo.</div>
+  </div>
+</div>
+
+<!-- =============== AD 3 =============== -->
+<div class="piece" id="ad3">
+  <div class="piece-h">
+    <div>
+      <span class="pill" data-lang="ca">Efecte dominó</span>
+      <span class="pill" data-lang="es">Efecto dominó</span>
+      <h2 data-lang="ca">Ad 3 · No vénen a per tu, vénen a per qui tens</h2>
+      <h2 data-lang="es">Ad 3 · No vienen a por ti, vienen a por los que tienes detrás</h2>
+      <div class="meta" data-lang="ca">30–40 s · 2 takes</div>
+      <div class="meta" data-lang="es">30–40 s · 2 takes</div>
+    </div>
+    <button class="copy-btn" data-copy="ad3">Copiar</button>
+  </div>
+
+  <div class="copy" data-lang="ca">
+    <div class="lbl">Hook</div>
+    <div class="txt">Si hackegen la teva gestoria, qui té un problema? Tu no. Els teus clients.</div>
+  </div>
+  <div class="copy" data-lang="ca">
+    <div class="lbl">Cos</div>
+    <div class="txt">Una gestoria mitjana té dades fiscals i nòmines de 200 empreses. Una clínica té historials mèdics. Una assessoria té contractes i comptes bancaris.
+
+No et hackegen a tu perquè sí — et hackegen perquè ets la porta d'entrada a tots els que estan darrere.
+
+I quan passa, els primers que truquen no són els hackers. Són els teus clients, l'advocat, l'agència de protecció de dades i la teva asseguradora preguntant per què no tenies allò que la llei diu que has de tenir.
+
+A Infotic muntem la seguretat pensada per a empreses que custodien dades d'altres. Et fem una auditoria gratuïta i et diem quins forats t'exposen a tu i als teus clients. Mig minut per apuntar-te.</div>
+  </div>
+
+  <div class="copy" data-lang="es">
+    <div class="lbl">Hook</div>
+    <div class="txt">Si hackean tu gestoría, ¿quién tiene un problema? Tú no. Tus clientes.</div>
+  </div>
+  <div class="copy" data-lang="es">
+    <div class="lbl">Cuerpo</div>
+    <div class="txt">Una gestoría media tiene datos fiscales y nóminas de 200 empresas. Una clínica tiene historiales médicos. Una asesoría tiene contratos y cuentas bancarias.
+
+No te hackean a ti porque sí — te hackean porque eres la puerta de entrada a todos los que están detrás.
+
+Y cuando pasa, los primeros que llaman no son los hackers. Son tus clientes, el abogado, la agencia de protección de datos y tu aseguradora preguntando por qué no tenías lo que la ley dice que tienes que tener.
+
+En Infotic montamos la seguridad pensada para empresas que custodian datos de otros. Te hacemos una auditoría gratuita y te decimos qué agujeros te exponen a ti y a tus clientes. Medio minuto para apuntarte.</div>
+  </div>
+</div>
+
+<!-- =============== AD 4 =============== -->
+<div class="piece" id="ad4">
+  <div class="piece-h">
+    <div>
+      <span class="pill">Deadline</span>
+      <h2 data-lang="ca">Ad 4 · Sis mesos tard, no zero</h2>
+      <h2 data-lang="es">Ad 4 · Seis meses tarde, no cero</h2>
+      <div class="meta" data-lang="ca">30–40 s · 2 takes</div>
+      <div class="meta" data-lang="es">30–40 s · 2 takes</div>
+    </div>
+    <button class="copy-btn" data-copy="ad4">Copiar</button>
+  </div>
+
+  <div class="copy" data-lang="ca">
+    <div class="lbl">Hook</div>
+    <div class="txt">La NIS2 va entrar en vigor a l'octubre. I tu encara no has fet res. Tranquil, no ets l'únic.</div>
+  </div>
+  <div class="copy" data-lang="ca">
+    <div class="lbl">Cos</div>
+    <div class="txt">El 70% de les PIMEs catalanes a qui aplica la NIS2 encara no s'han posat al dia. Però atenció: "tothom va tard" no és cap defensa quan arribi la inspecció.
+
+La sanció és de fins a 10 milions d'euros o el 2% de la facturació. El que sigui més alt.
+
+El que no et diuen és que no cal que ho facis tot demà. El que sí que has de poder demostrar és que ho estàs fent. Un pla, unes mesures bàsiques, una evidència. Això es munta en setmanes, no en un any.
+
+Si tens entre 10 i 100 treballadors i no saps per on començar, t'organitzem una trucada de 30 minuts gratuïta i marxes amb un pla. Sense compromís. Aquí sota.</div>
+  </div>
+
+  <div class="copy" data-lang="es">
+    <div class="lbl">Hook</div>
+    <div class="txt">La NIS2 entró en vigor en octubre. Y tú todavía no has hecho nada. Tranquilo, no eres el único.</div>
+  </div>
+  <div class="copy" data-lang="es">
+    <div class="lbl">Cuerpo</div>
+    <div class="txt">El 70% de las pymes catalanas a las que aplica la NIS2 todavía no se han puesto al día. Pero atención: "todo el mundo va tarde" no es ninguna defensa cuando llegue la inspección.
+
+La sanción es de hasta 10 millones de euros o el 2% de la facturación. Lo que sea más alto.
+
+Lo que no te cuentan es que no hace falta que lo hagas todo mañana. Lo que sí tienes que poder demostrar es que lo estás haciendo. Un plan, unas medidas básicas, una evidencia. Eso se monta en semanas, no en un año.
+
+Si tienes entre 10 y 100 trabajadores y no sabes por dónde empezar, te organizamos una llamada de 30 minutos gratuita y te vas con un plan. Sin compromiso. Aquí abajo.</div>
+  </div>
+</div>
+
+<!-- =============== REEL 1 =============== -->
+<div class="piece" id="reel1">
+  <div class="piece-h">
+    <div>
+      <span class="pill" data-lang="ca">Reel fixat</span>
+      <span class="pill" data-lang="es">Reel fijado</span>
+      <h2 data-lang="ca">Reel 1 · La nostra història</h2>
+      <h2 data-lang="es">Reel 1 · Nuestra historia</h2>
+      <div class="meta" data-lang="ca">60–75 s · cal completar [X] i anècdota real</div>
+      <div class="meta" data-lang="es">60–75 s · hay que completar [X] y anécdota real</div>
+    </div>
+    <button class="copy-btn" data-copy="reel1">Copiar</button>
+  </div>
+
+  <div class="copy" data-lang="ca">
+    <div class="txt">Et vull explicar per què vam muntar Infotic, perquè no va ser per casualitat.
+
+Jo venia de [X anys] al sector. I em vaig adonar que les PIMEs catalanes estaven esperant a ser hackejades. No perquè fossin descuidades — perquè ningú els ho explicava en cristià.
+
+El primer client va ser [tipus d'empresa]. Tenien [problema concret]. Ho vam tancar en [X temps]. I quan vaig veure la cara de tranquil·litat del director, vaig saber que això era el que volia fer.
+
+Avui som [X persones] i seguim amb la mateixa idea: traduir el mal rotllo de la ciberseguretat al llenguatge del director. Si això et sona, segueix-nos.</div>
+  </div>
+
+  <div class="copy" data-lang="es">
+    <div class="txt">Te voy a contar por qué montamos Infotic, porque no fue por casualidad.
+
+Yo venía de [X años] en el sector. Y me di cuenta de que las pymes catalanas estaban esperando a ser hackeadas. No porque fueran descuidadas — porque nadie se lo explicaba en cristiano.
+
+El primer cliente fue [tipo de empresa]. Tenían [problema concreto]. Lo cerramos en [X tiempo]. Y cuando vi la cara de tranquilidad del director, supe que esto era lo que quería hacer.
+
+Hoy somos [X personas] y seguimos con la misma idea: traducir el mal rollo de la ciberseguridad al lenguaje del director. Si esto te suena, síguenos.</div>
+  </div>
+</div>
+
+<!-- =============== REEL 2 =============== -->
+<div class="piece" id="reel2">
+  <div class="piece-h">
+    <div>
+      <span class="pill" data-lang="ca">Reel fixat</span>
+      <span class="pill" data-lang="es">Reel fijado</span>
+      <h2 data-lang="ca">Reel 2 · Com treballem</h2>
+      <h2 data-lang="es">Reel 2 · Cómo trabajamos</h2>
+      <div class="meta">75–90 s</div>
+    </div>
+    <button class="copy-btn" data-copy="reel2">Copiar</button>
+  </div>
+
+  <div class="copy" data-lang="ca">
+    <div class="txt">Una empresa em truca espantada. Què passa en les pròximes 6 setmanes?
+
+Setmana 1 — Auditoria. Mirem què tens, què està protegit i què està obert. Sense judicis. Acabes amb un informe clar.
+
+Setmana 2 — Pla. Et donem una llista prioritzada. No 80 coses. Cinc o sis, en ordre, amb temps i cost. La majoria es resolen en una tarda.
+
+Setmanes 3 a 5 — Implementació. Ho fem nosaltres. No t'enviem deures.
+
+Setmana 6 — Evidència. T'entreguem una carpeta amb tot el que s'ha fet, signat. Aquesta carpeta és el que ensenyes a una inspecció, a un client gran o al teu consell.
+
+Sis setmanes. Un mètode. Una carpeta. Si vols saber com seria al teu cas, baixa al perfil i demana l'auditoria gratuïta.</div>
+  </div>
+
+  <div class="copy" data-lang="es">
+    <div class="txt">Una empresa me llama asustada. ¿Qué pasa en las próximas 6 semanas?
+
+Semana 1 — Auditoría. Miramos qué tienes, qué está protegido y qué está abierto. Sin juicios. Acabas con un informe claro.
+
+Semana 2 — Plan. Te damos una lista priorizada. No 80 cosas. Cinco o seis, en orden, con tiempo y coste. La mayoría se resuelven en una tarde.
+
+Semanas 3 a 5 — Implementación. Lo hacemos nosotros. No te enviamos deberes.
+
+Semana 6 — Evidencia. Te entregamos una carpeta con todo lo que se ha hecho, firmado. Esta carpeta es lo que enseñas a una inspección, a un cliente grande o a tu consejo.
+
+Seis semanas. Un método. Una carpeta. Si quieres saber cómo sería en tu caso, baja al perfil y pide la auditoría gratuita.</div>
+  </div>
+</div>
+
+<!-- =============== REEL 3 =============== -->
+<div class="piece" id="reel3">
+  <div class="piece-h">
+    <div>
+      <span class="pill" data-lang="ca">Reel fixat</span>
+      <span class="pill" data-lang="es">Reel fijado</span>
+      <h2 data-lang="ca">Reel 3 · Testimonis (preguntes guia)</h2>
+      <h2 data-lang="es">Reel 3 · Testimonios (preguntas guía)</h2>
+      <div class="meta" data-lang="ca">No es llegeix. Preguntes obertes al client.</div>
+      <div class="meta" data-lang="es">No se lee. Preguntas abiertas al cliente.</div>
+    </div>
+  </div>
+
+  <div class="copy" data-lang="ca">
+    <div class="lbl">Preguntes al client</div>
+    <ul class="questions">
+      <li>Per què vau venir a Infotic?</li>
+      <li>Què teniu ara que abans no teníeu?</li>
+      <li>Què li diries a algú com tu que dubta?</li>
+    </ul>
+  </div>
+  <div class="copy" data-lang="ca">
+    <div class="lbl">Tancament del reel (veu del fundador)</div>
+    <div class="txt">Si vols la mateixa tranquil·litat, demana una auditoria gratuïta. 30 minuts, sense compromís.</div>
+  </div>
+
+  <div class="copy" data-lang="es">
+    <div class="lbl">Preguntas al cliente</div>
+    <ul class="questions">
+      <li>¿Por qué vinisteis a Infotic?</li>
+      <li>¿Qué tenéis ahora que antes no teníais?</li>
+      <li>¿Qué le dirías a alguien como tú que duda?</li>
+    </ul>
+  </div>
+  <div class="copy" data-lang="es">
+    <div class="lbl">Cierre del reel (voz del fundador)</div>
+    <div class="txt">Si quieres la misma tranquilidad, pide una auditoría gratuita. 30 minutos, sin compromiso.</div>
+  </div>
+</div>
+
+<!-- =============== VSL =============== -->
+<div class="piece" id="vsl">
+  <div class="piece-h">
+    <div>
+      <span class="pill">VSL</span>
+      <h2 data-lang="ca">VSL · 3:30–4:00 min</h2>
+      <h2 data-lang="es">VSL · 3:30–4:00 min</h2>
+      <div class="meta" data-lang="ca">8 seccions seguides com a monòleg, edició posterior</div>
+      <div class="meta" data-lang="es">8 secciones seguidas como monólogo, edición posterior</div>
+    </div>
+    <button class="copy-btn" data-copy="vsl">Copiar tot</button>
+  </div>
+
+  <!-- CA -->
+  <div class="vsl-section" data-lang="ca">
+    <div class="lbl">1 · Hook <span>0:00–0:15</span></div>
+    <div class="txt">Si dirigeixes una PIME a Catalunya i tens entre 10 i 100 treballadors, el que et diré ara potser et fa mandra escoltar-ho — però et pot estalviar entre 50.000 i 10 milions d'euros. Trenta segons. Decideix tu.</div>
+  </div>
+  <div class="vsl-section" data-lang="ca">
+    <div class="lbl">2 · El problema real <span>0:15–0:50</span></div>
+    <div class="txt">Des d'octubre de 2025, la directiva NIS2 ja és obligatòria a Espanya. I el que poca gent t'explica és que la responsabilitat no és del teu informàtic, no és del teu proveïdor, no és del teu cunyat. És teva, com a administrador. Negre sobre blanc, a la llei.
+
+Això vol dir que si demà entren a les dades dels teus clients — i et puc dir per experiència que cada setmana passa a PIMEs com la teva — tu respons amb el teu càrrec, i la teva empresa respon amb una multa de fins a 10 milions d'euros o el 2% de la facturació.</div>
+  </div>
+  <div class="vsl-section" data-lang="ca">
+    <div class="lbl">3 · Per què el que tens ara no n'hi ha prou <span>0:50–1:20</span></div>
+    <div class="txt">I aquí és on la majoria em dieu el mateix: "però jo ja tinc antivirus", "el meu informàtic se n'encarrega", "som petits, qui ens vol hackear".
+
+Mira — l'antivirus va deixar de ser suficient fa 10 anys. El teu informàtic et resol el dia a dia, però rarament té el temps ni la formació per fer una adequació formal. I sobre la mida: precisament perquè ets petit, ets l'objectiu fàcil. Els ransomware automatitzats no trien — escanegen i ataquen tot el que troben obert.</div>
+  </div>
+  <div class="vsl-section" data-lang="ca">
+    <div class="lbl">4 · La trampa de la inspecció <span>1:20–1:50</span></div>
+    <div class="txt">I per què t'ho explico ara? Perquè el problema no és només l'atac. És la inspecció.
+
+Quan arribi — i arribarà, comencen aquest any en sectors regulats — no et demanaran que demostris que no t'han hackejat. Et demanaran que demostris que has actuat amb diligència. Que tenies un pla. Unes mesures bàsiques. Una formació al personal. Una evidència signada.
+
+Si tens això, encara que algun dia passi algo, et salva. Si no ho tens, encara que mai et passi res, et multen igual.</div>
+  </div>
+  <div class="vsl-section" data-lang="ca">
+    <div class="lbl">5 · La solució: el mètode Infotic <span>1:50–2:30</span></div>
+    <div class="txt">El que fem a Infotic és exactament això: convertir-te en una empresa demostrable.
+
+En 6 setmanes:
+
+Setmana 1, auditem el que tens. Setmana 2, et donem un pla prioritzat. Setmanes 3 a 5, implementem les mesures clau — MFA, còpies xifrades, gestió d'accessos, pla de resposta. Setmana 6, t'entreguem la Carpeta d'Evidències NIS2: un dossier signat amb tot el que s'ha fet, llest perquè l'ensenyis a una inspecció, a un client gran o al teu propi consell.</div>
+  </div>
+  <div class="vsl-section" data-lang="ca">
+    <div class="lbl">6 · Prova social <span>2:30–3:00</span></div>
+    <div class="txt">Aquest mètode l'apliquen ja [X] PIMEs catalanes — gestories, clíniques, despatxos, indústria. La diferència entre el primer dia i l'últim no és tècnica. És que el director, finalment, pot tancar la porta del despatx i marxar a casa sabent que està cobert.</div>
+  </div>
+  <div class="vsl-section" data-lang="ca">
+    <div class="lbl">7 · Oferta <span>3:00–3:30</span></div>
+    <div class="txt">Si això et fa sentit, el primer pas és gratuït i dura 30 minuts.
+
+És una auditoria express on revisem el teu cas, et diem si la NIS2 t'aplica, et detectem fins a 3 forats principals i et donem un cost orientatiu per tancar-los.
+
+Surts d'aquesta trucada amb un mini-informe d'1 pàgina, encara que decideixis no contractar res. Cero compromís.</div>
+  </div>
+  <div class="vsl-section" data-lang="ca">
+    <div class="lbl">8 · CTA i tancament <span>3:30–3:50</span></div>
+    <div class="txt">Apunta't al formulari aquí sota. Aquesta setmana tenim 4 espais oberts. Si quan ho llegeixes ja estan plens, et confirmem la setmana següent.
+
+Et veig a la trucada.</div>
+  </div>
+
+  <!-- ES -->
+  <div class="vsl-section" data-lang="es">
+    <div class="lbl">1 · Hook <span>0:00–0:15</span></div>
+    <div class="txt">Si diriges una pyme en Cataluña y tienes entre 10 y 100 trabajadores, lo que te diré ahora quizá te dé pereza escucharlo — pero te puede ahorrar entre 50.000 y 10 millones de euros. Treinta segundos. Decides tú.</div>
+  </div>
+  <div class="vsl-section" data-lang="es">
+    <div class="lbl">2 · El problema real <span>0:15–0:50</span></div>
+    <div class="txt">Desde octubre de 2025, la directiva NIS2 ya es obligatoria en España. Y lo que poca gente te cuenta es que la responsabilidad no es de tu informático, no es de tu proveedor, no es de tu cuñado. Es tuya, como administrador. Negro sobre blanco, en la ley.
+
+Esto significa que si mañana entran a los datos de tus clientes — y te puedo decir por experiencia que cada semana le pasa a pymes como la tuya — tú respondes con tu cargo, y tu empresa responde con una multa de hasta 10 millones de euros o el 2% de la facturación.</div>
+  </div>
+  <div class="vsl-section" data-lang="es">
+    <div class="lbl">3 · Por qué lo que tienes ahora no es suficiente <span>0:50–1:20</span></div>
+    <div class="txt">Y aquí es donde la mayoría me decís lo mismo: "pero yo ya tengo antivirus", "mi informático se encarga", "somos pequeños, quién nos va a querer hackear".
+
+Mira — el antivirus dejó de ser suficiente hace 10 años. Tu informático te resuelve el día a día, pero raramente tiene el tiempo ni la formación para hacer una adecuación formal. Y sobre el tamaño: precisamente porque eres pequeño, eres el objetivo fácil. Los ransomware automatizados no eligen — escanean y atacan todo lo que encuentran abierto.</div>
+  </div>
+  <div class="vsl-section" data-lang="es">
+    <div class="lbl">4 · La trampa de la inspección <span>1:20–1:50</span></div>
+    <div class="txt">¿Y por qué te lo cuento ahora? Porque el problema no es solo el ataque. Es la inspección.
+
+Cuando llegue — y llegará, empiezan este año en sectores regulados — no te pedirán que demuestres que no te han hackeado. Te pedirán que demuestres que has actuado con diligencia. Que tenías un plan. Unas medidas básicas. Una formación al personal. Una evidencia firmada.
+
+Si tienes esto, aunque algún día pase algo, te salva. Si no lo tienes, aunque nunca te pase nada, te multan igual.</div>
+  </div>
+  <div class="vsl-section" data-lang="es">
+    <div class="lbl">5 · La solución: el método Infotic <span>1:50–2:30</span></div>
+    <div class="txt">Lo que hacemos en Infotic es exactamente eso: convertirte en una empresa demostrable.
+
+En 6 semanas:
+
+Semana 1, auditamos lo que tienes. Semana 2, te damos un plan priorizado. Semanas 3 a 5, implementamos las medidas clave — MFA, copias cifradas, gestión de accesos, plan de respuesta. Semana 6, te entregamos la Carpeta de Evidencias NIS2: un dossier firmado con todo lo que se ha hecho, listo para que lo enseñes a una inspección, a un cliente grande o a tu propio consejo.</div>
+  </div>
+  <div class="vsl-section" data-lang="es">
+    <div class="lbl">6 · Prueba social <span>2:30–3:00</span></div>
+    <div class="txt">Este método lo aplican ya [X] pymes catalanas — gestorías, clínicas, despachos, industria. La diferencia entre el primer día y el último no es técnica. Es que el director, finalmente, puede cerrar la puerta del despacho e irse a casa sabiendo que está cubierto.</div>
+  </div>
+  <div class="vsl-section" data-lang="es">
+    <div class="lbl">7 · Oferta <span>3:00–3:30</span></div>
+    <div class="txt">Si esto te hace sentido, el primer paso es gratuito y dura 30 minutos.
+
+Es una auditoría express donde revisamos tu caso, te decimos si la NIS2 te aplica, te detectamos hasta 3 agujeros principales y te damos un coste orientativo para cerrarlos.
+
+Sales de esta llamada con un mini-informe de 1 página, aunque decidas no contratar nada. Cero compromiso.</div>
+  </div>
+  <div class="vsl-section" data-lang="es">
+    <div class="lbl">8 · CTA y cierre <span>3:30–3:50</span></div>
+    <div class="txt">Apúntate en el formulario aquí abajo. Esta semana tenemos 4 huecos abiertos. Si cuando lo leas ya están llenos, te confirmamos la semana siguiente.
+
+Nos vemos en la llamada.</div>
+  </div>
+</div>
+
+<!-- =============== POST A =============== -->
+<div class="piece" id="post-a">
+  <div class="piece-h">
+    <div>
+      <span class="pill" data-lang="ca">Cos copy A</span>
+      <span class="pill" data-lang="es">Cuerpo copy A</span>
+      <h2 data-lang="ca">Directe · regulatori</h2>
+      <h2 data-lang="es">Directo · regulatorio</h2>
+      <div class="meta" data-lang="ca">Text del post per acompanyar el vídeo al feed</div>
+      <div class="meta" data-lang="es">Texto del post para acompañar el vídeo en el feed</div>
+    </div>
+    <button class="copy-btn" data-copy="post-a">Copiar</button>
+  </div>
+
+  <div class="copy" data-lang="ca">
+    <div class="txt">Octubre 2025. La NIS2 va entrar en vigor.
+
+Si tens entre 10 i 100 treballadors i custodies dades de clients (gestoria, clínica, assessoria, comerç, indústria…), tu ets el responsable. No el teu informàtic. No el teu cunyat. Tu.
+
+Multes de fins a 10M€ o el 2% de la facturació.
+
+A Infotic et fem una auditoria gratuïta de 30 minuts. Et diem què tens, què et falta i què costa posar-ho al dia.
+
+👉 Apunta't a sota. Aquesta setmana tenim 4 espais.</div>
+  </div>
+
+  <div class="copy" data-lang="es">
+    <div class="txt">Octubre 2025. La NIS2 entró en vigor.
+
+Si tienes entre 10 y 100 trabajadores y custodias datos de clientes (gestoría, clínica, asesoría, comercio, industria…), tú eres el responsable. No tu informático. No tu cuñado. Tú.
+
+Multas de hasta 10M€ o el 2% de la facturación.
+
+En Infotic te hacemos una auditoría gratuita de 30 minutos. Te decimos qué tienes, qué te falta y qué cuesta ponerlo al día.
+
+👉 Apúntate abajo. Esta semana tenemos 4 huecos.</div>
+  </div>
+</div>
+
+<!-- =============== POST B =============== -->
+<div class="piece" id="post-b">
+  <div class="piece-h">
+    <div>
+      <span class="pill" data-lang="ca">Cos copy B</span>
+      <span class="pill" data-lang="es">Cuerpo copy B</span>
+      <h2 data-lang="ca">Història · parada total</h2>
+      <h2 data-lang="es">Historia · parada total</h2>
+      <div class="meta" data-lang="ca">Text del post per acompanyar el vídeo al feed</div>
+      <div class="meta" data-lang="es">Texto del post para acompañar el vídeo en el feed</div>
+    </div>
+    <button class="copy-btn" data-copy="post-b">Copiar</button>
+  </div>
+
+  <div class="copy" data-lang="ca">
+    <div class="txt">Imagina arribar a l'oficina i que res s'obri.
+
+Ni correu. Ni ERP. Ni fitxes. Tot encriptat per un ransomware. Cada setmana passa a empreses com la teva. Mitjana de dies sense facturar quan no hi ha res preparat: 22.
+
+El que fem a Infotic no és vendre por. És deixar-te preparat perquè, si passa, et tornin 2 hores en comptes de 22 dies.
+
+Auditoria gratuïta de 30 minuts. Sortiràs sabent exactament on tens el forat.
+
+👉 Apunta't a sota.</div>
+  </div>
+
+  <div class="copy" data-lang="es">
+    <div class="txt">Imagina llegar a la oficina y que no se abra nada.
+
+Ni correo. Ni ERP. Ni fichas. Todo encriptado por un ransomware. Cada semana le pasa a empresas como la tuya. Media de días sin facturar cuando no hay nada preparado: 22.
+
+Lo que hacemos en Infotic no es vender miedo. Es dejarte preparado para que, si pasa, te devuelvan 2 horas en lugar de 22 días.
+
+Auditoría gratuita de 30 minutos. Saldrás sabiendo exactamente dónde tienes el agujero.
+
+👉 Apúntate abajo.</div>
+  </div>
+</div>
+
+</main>
+</div>
+
+<script>
+function setLang(l){
+  document.body.classList.remove('ca','es');
+  document.body.classList.add(l);
+  localStorage.setItem('infotic-copys-lang',l);
+}
+(function init(){
+  var saved = localStorage.getItem('infotic-copys-lang');
+  if (saved) setLang(saved);
+  document.querySelectorAll('.copy-btn[data-copy]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var pieceId = btn.dataset.copy;
+      var piece = document.getElementById(pieceId);
+      var lang = document.body.classList.contains('es') ? 'es' : 'ca';
+      var nodes = piece.querySelectorAll('[data-lang="'+lang+'"]');
+      var text = '';
+      nodes.forEach(function(n){
+        // For VSL: each section has lbl + txt; for ads: lbl + txt; for reels: just txt
+        var label = n.querySelector('.lbl');
+        var body = n.querySelector('.txt') || n.querySelector('.questions');
+        if (label && body) {
+          text += label.innerText.trim() + '\n\n' + body.innerText.trim() + '\n\n---\n\n';
+        } else if (body) {
+          text += body.innerText.trim() + '\n\n---\n\n';
+        }
+      });
+      text = text.replace(/\n\n---\n\n$/, '').trim();
+      navigator.clipboard.writeText(text).then(function(){
+        btn.classList.add('ok');
+        var orig = btn.textContent;
+        btn.textContent = '✓ Copiat';
+        setTimeout(function(){
+          btn.classList.remove('ok');
+          btn.textContent = orig;
+        }, 1500);
+      });
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
